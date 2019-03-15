@@ -1,0 +1,42 @@
+.screen-wrapper {
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media only screen and (max-width: 1024px) {
+  .ant-card {
+    width: 80vw !important;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .ant-card {
+    width: 50vw !important;
+  }
+}
+
+@media only screen and (max-width: 512px) {
+  .ant-card {
+    width: 95vw !important;
+  }
+}
+
+.ant-card {
+  border-radius: 10px;
+  height: 50vh;
+
+  text-align: center;
+}
+
+.ant-card-body {
+  width: 100%;
+  height: 100%;
+}
+
+.note-input {
+  height: 65% !important;
+}

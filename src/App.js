@@ -1,18 +1,49 @@
-import React, { Component } from 'react';
-import { Button } from 'antd'
+import React, { useState } from "react";
+import { Button, Card, Input, message } from "antd";
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
+import "./App.css";
+
+const App = () => {
+  const [submitting, setSubmitting] = useState(false);
+  const [inputValue, setInputValue] = useState("");
+
+  const handleSubmit = async () => {
+    console.log(inputValue);
+    setSubmitting(true);
+    await new Promise(resolve => {
+      setTimeout(() => {
+        resolve();
+      }, 500);
+    });
+    setSubmitting(false);
+    message.success("Submitted");
+  };
+
+  const handleInputChange = e => {
+    setInputValue(e.target.value);
+  };
+
+  return (
+    <div className="screen-wrapper">
+      <Card>
+        <h1 style={{ textAlign: "center" }}>Notepad</h1>
+        <Input.TextArea
+          className="note-input"
+          onPressEnter={handleSubmit}
+          onChange={handleInputChange}
+          value={inputValue}
+        />
         <Button
-          className="App-link"
+          loading={submitting}
+          type="primary"
+          style={{ marginTop: "1em" }}
+          onClick={handleSubmit}
         >
-          Learn React
-          </Button>
-      </div>
-    );
-  }
-}
+          Submit
+        </Button>
+      </Card>
+    </div>
+  );
+};
 
 export default App;
