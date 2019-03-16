@@ -40,3 +40,28 @@
 .note-input {
   height: 65% !important;
 }
+
+.refresh-button {
+  position: absolute;
+  right: 24px;
+  top: 1em;
+
+  width: 40px;
+  height: 40px;
+  padding: 0px;
+
+  border-radius: 30px;
+}
+
+.spinning {
+  animation: spin 500ms linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(360deg);
+  }
+}
