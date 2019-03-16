@@ -1,22 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button, Card, Input, message } from "antd";
 
+import { getNote, postNote } from "./servcies";
 import "./App.css";
 
 const App = () => {
   const [submitting, setSubmitting] = useState(false);
   const [inputValue, setInputValue] = useState("");
 
+  useEffect(() => {
+    handleGetNote();
+  }, []);
+
+  const handleGetNote = async () => {
+    const content = await getNote();
+    setInputValue(content);
+  };
+
   const handleSubmit = async () => {
-    console.log(inputValue);
     setSubmitting(true);
-    await new Promise(resolve => {
-      setTimeout(() => {
-        resolve();
-      }, 500);
-    });
+    const response = await postNote(inputValue);
     setSubmitting(false);
     message.success("Submitted");
+    console.log(response);
   };
 
   const handleInputChange = e => {
