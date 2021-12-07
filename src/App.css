@@ -41,6 +41,20 @@
   height: 65% !important;
 }
 
+.link-button {
+  position: absolute;
+  right: 75px;
+  top: 1em;
+
+  width: 40px;
+  height: 40px;
+  padding: 0px;
+
+  border-radius: 30px;
+
+  animation: fadein 150ms;
+}
+
 .refresh-button {
   position: absolute;
   right: 24px;
@@ -63,5 +77,14 @@
   }
   100% {
     transform: rotateZ(360deg);
+  }
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }

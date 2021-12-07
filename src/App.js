@@ -7,10 +7,18 @@ import "./App.css";
 const App = () => {
   const [loading, setLoading] = useState(false);
   const [inputValue, setInputValue] = useState("");
+  const [hasUrl, setHasUrl] = useState(false);
 
   useEffect(() => {
     handleGetNote();
   }, []);
+
+  useEffect(() => {
+    var urlRegExp = new RegExp(
+      /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/gi
+    );
+    setHasUrl(inputValue.match(urlRegExp));
+  }, [inputValue]);
 
   const handleGetNote = async () => {
     setLoading(true);
@@ -28,7 +36,7 @@ const App = () => {
     console.log(response);
   };
 
-  const handleInputChange = e => {
+  const handleInputChange = (e) => {
     setInputValue(e.target.value);
   };
 
@@ -51,6 +59,15 @@ const App = () => {
           >
             Submit
           </Button>
+
+          {hasUrl ? (
+            <a href={hasUrl[0]}>
+              <Button className="link-button">
+                <i className="fas fa-link" />
+              </Button>
+            </a>
+          ) : null}
+
           <Button className="refresh-button" onClick={handleGetNote}>
             <i
               className={
