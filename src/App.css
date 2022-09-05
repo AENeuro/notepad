@@ -26,7 +26,7 @@
 }
 
 .ant-card {
-  border-radius: 10px;
+  /* border-radius: 10px; */
   height: 50vh;
 
   text-align: center;
@@ -75,6 +75,7 @@
   0% {
     transform: rotateZ(0);
   }
+
   100% {
     transform: rotateZ(360deg);
   }
@@ -84,6 +85,7 @@
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
